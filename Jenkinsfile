@@ -11,6 +11,7 @@ pipeline{
         }
         stage("test-Environment"){
             steps{
+                script {
                 sh 'docker --version'
                 sh 'php --version'
                 }
