@@ -1,4 +1,7 @@
 /* groovylint-disable FactoryMethodName, LineLength */
+import jenkins.model.*
+jenkins = Jenkins.instance
+
 def testEnv() {
     sh 'docker --version'
     sh 'php --version'
