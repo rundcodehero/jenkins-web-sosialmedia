@@ -1,9 +1,11 @@
 def gv
 pipeline{
     agent any
+
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('hub-docker-repo')
 	}
+    
     stages{
         stage("init"){
             steps{
