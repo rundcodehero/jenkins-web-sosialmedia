@@ -21,8 +21,8 @@ pipeline{
             steps{
                 script { 
                 withCredentials [usernamePassword(credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
-                sh "echo 'building sosmed image..'"
-                sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
+                    sh "echo 'building sosmed image..'"
+                    sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
                 } 
             }   
         }
