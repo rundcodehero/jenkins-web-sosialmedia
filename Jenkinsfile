@@ -2,12 +2,13 @@ def gv
 pipeline{
     agent any
     stages{
-        stage("init")
+        stage("init"){
             steps{
                 script {
                     gv = load "script.groopy"
                 }
             }
+        }
         stage("testEnvironment"){
             steps{
                 script {
@@ -18,7 +19,7 @@ pipeline{
         stage("buildImage"){
             steps{
                 script {
-                    gv.buildImage ()
+                    gv.buildImage()
                 }
                
             }   
