@@ -3,6 +3,7 @@ def testEnv() {
 }
 
 def buildImage() {
+    sh 'echo 'lets build Docker Image''
     sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
 }
 
