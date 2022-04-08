@@ -1,12 +1,18 @@
+def gv
 pipeline{
-    agent{
-        label "node"
-    }
+    agent any
     stages{
+        stage("init")
+            steps{
+                script {
+                    gv = load "script.groopy"
+                }
+            }
         stage("Test environment"){
             steps{
-               docker --version
-               php --version
+                script {
+                    gv.testEnv()
+                }
             }   
         }
     }
@@ -14,10 +20,7 @@ pipeline{
         stage("build Docker"){
             steps{
                 script {
-                  withCredentials [usernamePassword(credentialsID: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
-                    sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push rundcode/jenkins-sosialmedia:v1.0'
+                    gv.buildImage ()
                 }
                
             }   
@@ -27,6 +30,7 @@ pipeline{
         stage("push to hub.docker"){
             steps{
                echo " push to repository rundcode/sosmed-jenkins:latest"
+               gv.pushImage ()
             }   
         }
     }

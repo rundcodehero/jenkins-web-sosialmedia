@@ -1,6 +1,6 @@
 def testEnv() {
-    docker --version
-    php --version
+    sh 'docker --version'
+    sh 'php --version'
 }
 
 def buildImage() {
@@ -10,7 +10,7 @@ def buildImage() {
 }
 
 def pushImage () {
-    withCredentials [usernamePassword(credentialsID: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
+    withCredentials [usernamePassword(credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
       sh "echo $PASS | docker login -u $USER --password-stdin"
       sh 'docker push rundcode/jenkins-sosialmedia:v1.0'
 }
