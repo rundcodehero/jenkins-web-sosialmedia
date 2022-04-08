@@ -9,14 +9,14 @@ pipeline{
                 }
             }
         }
-        stage("testEnvironment"){
+        stage("test-Environment"){
             steps{
                 script {
                     gv.testEnv()
                 }
             }   
         }
-        stage("buildImage"){
+        stage("build-Image"){
             steps{
                 script {
                     gv.buildImage()
@@ -24,7 +24,7 @@ pipeline{
                
             }   
         }
-        stage("pushImage"){
+        stage("push-Image"){
             steps{
                 script {
                     gv.pushImage ()
