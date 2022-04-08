@@ -4,8 +4,8 @@ def testEnv() {
 
 def buildImage() {
     sh "echo 'lets build Docker Image'"
-    sh "docker tag rundcode/jenkins-sosialmedia:v1.0 
-    sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
+    sh "docker tag rundcode/jenkins-sosialmedia:v1.0  "
+    sh 'docker rmi -f $(docker images -aq --filter "dangling=true")'
 }
 
 def pushImage() {
@@ -16,5 +16,6 @@ def pushImage() {
 def runImage () {
     sh 'docker rm -f sosmed'
     sh "docker run -dit -p 8000:80 --name sosmed rundcode/jenkins-sosialmedia:v1.0"
+}
 
 return this
