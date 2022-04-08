@@ -14,7 +14,7 @@ pipeline{
                 }
             }
         }
-        stage("test-Environment"){
+        stage("test-Env"){
             steps{
                 script {
                     gv.testEnv ()
@@ -25,6 +25,13 @@ pipeline{
             steps{
                 script { 
                  gv.buildImage()
+                } 
+            }   
+        }
+         stage("pushImage"){
+            steps{
+                script { 
+                 gv.pushImage()
                 } 
             }   
         }
