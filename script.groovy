@@ -5,7 +5,8 @@ def testEnv() {
 
 
 def buildImage() {
-     withCredentials [usernamePassword(credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
+     /* groovylint-disable-next-line LineLength */
+     withCredentials [usernamePassword (credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
         sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
 }
 
