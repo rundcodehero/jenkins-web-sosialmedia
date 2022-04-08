@@ -17,16 +17,8 @@ pipeline{
         stage("build-Image"){
             steps{
                 script { 
-                    withCredentials {[usernamePassword (credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]}
-                        sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
+                 gv.buildImage()
                 } 
-            }   
-        }
-        stage("push-Image"){
-            steps{
-                script {
-                    gv.pushImage ()
-                }
             }   
         }
     }
