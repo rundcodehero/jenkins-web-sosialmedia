@@ -26,8 +26,9 @@ pipeline{
         }
         stage("pushImage"){
             steps{
-               echo " push to repository rundcode/sosmed-jenkins:latest"
-               gv.pushImage ()
+                script {
+                    gv.pushImage ()
+                }
             }   
         }
     }
