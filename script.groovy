@@ -9,7 +9,7 @@ def buildImage() {
 }
 
 def pushImage() {
-    sh 'echo $dockerLogin_PSW | docker login -u $dockerLogin_USR --password-stdin'
+    ssh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
     sh 'docker push rundcode/jenkins-sosialmedia:v1.0'
 }
 
