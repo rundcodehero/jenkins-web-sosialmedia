@@ -1,15 +1,15 @@
+/* groovylint-disable LineLength */
 def testEnv() {
     sh 'docker --version'
     sh 'php --version'
 }
 
 def buildImage() {
-    echo "building sosmed image.."
-      sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
-     
+    echo 'building sosmed image..'
+    sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
 }
 
-def pushImage () {
+def pushImage() {
     withCredentials [usernamePassword(credentialsID: 'hub-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]
       sh "echo $PASS | docker login -u $USER --password-stdin"
       sh 'docker push rundcode/jenkins-sosialmedia:v1.0'

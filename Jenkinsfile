@@ -8,16 +8,14 @@ pipeline{
                     gv = load "script.groopy"
                 }
             }
-        stage("Test environment"){
+        stage("testEnvironment"){
             steps{
                 script {
                     gv.testEnv()
                 }
             }   
         }
-    }
-    stages{
-        stage("build Docker"){
+        stage("buildImage"){
             steps{
                 script {
                     gv.buildImage ()
@@ -25,9 +23,7 @@ pipeline{
                
             }   
         }
-    }
-     stages{
-        stage("push to hub.docker"){
+        stage("pushImage"){
             steps{
                echo " push to repository rundcode/sosmed-jenkins:latest"
                gv.pushImage ()
