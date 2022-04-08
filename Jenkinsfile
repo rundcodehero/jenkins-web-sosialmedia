@@ -5,7 +5,7 @@ pipeline{
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('hub-docker-repo')
 	}
-    
+
     stages{
         stage("init"){
             steps{
@@ -16,7 +16,9 @@ pipeline{
         }
         stage("test-Environment"){
             steps{
-                echo"hallo"
+                script {
+                    gv.testEnv ()
+                }
             }   
         }
         stage("build-Image"){
