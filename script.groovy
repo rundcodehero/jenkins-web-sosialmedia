@@ -5,6 +5,7 @@ def testEnv() {
 def buildImage() {
     sh "echo 'lets BUILD Docker Image'"
     sh 'docker build -t rundcode/jenkins-sosialmedia:v1.0 .'
+    sh 'docker stop sosmed && docker rm sosmed'
     sh 'docker rmi $(docker images --filter "dangling=true" -q)'
 }
 
