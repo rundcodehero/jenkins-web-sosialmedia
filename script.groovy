@@ -1,5 +1,6 @@
 def testEnv() {
     sh 'docker --version'
+    sh 'kubectl version'
 
 }
 
