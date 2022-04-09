@@ -24,8 +24,6 @@ def pushImage2() {
 
 def runImage () {
     sh "echo 'lets TEST RUN Image'"
-    sh 'docker stop sosmed'
-    sh 'docker rm sosmed'
     sh 'docker run -dit -p 8000:80 --name sosmed rundcode/jenkins-sosialmedia:v1.0'
 }
 
