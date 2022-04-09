@@ -1,6 +1,6 @@
 def testEnv() {
     sh 'docker --version'
-    sh 'minikube --version'
+    sh 'kubectl get all'
 }
 
 def buildImage() {
@@ -15,6 +15,8 @@ def pushImage() {
 }
 
 def runImage () {
+    sh 'docker stop sosmed'
+    sh 'docker rm sosmed'
     sh 'docker run -dit -p 8000:80 --name sosmed rundcode/jenkins-sosialmedia:v1.0'
 }
 
