@@ -1,8 +1,6 @@
 def testEnv() {
     sh 'docker --version'
-    sh 'kubectl version'
-
-}
+ }
 
 def buildImage() {
     sh "echo 'lets BUILD Docker Image'"
