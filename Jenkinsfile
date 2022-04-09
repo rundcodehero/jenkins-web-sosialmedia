@@ -35,5 +35,12 @@ pipeline{
                 } 
             }   
         }
+        stage("runImage"){
+            steps{
+                script { 
+                 gv.runImage()
+                } 
+            }   
+        }
     }
 }
