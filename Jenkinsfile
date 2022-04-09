@@ -35,7 +35,7 @@ pipeline{
                 } 
             }   
         }
-        stage("runImage"){
+        stage("runImage2"){
             steps{
                 script { 
                  gv.runImage()
