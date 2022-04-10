@@ -12,9 +12,8 @@ def buildImage() {
 def pushImage() {
     /* groovylint-disable-next-line LineLength */
     sh "echo 'lets PUSH Docker Image'"
-    withCredentials([usernamePassword(credentialsId: 'hub-docker-repo', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')])
-          sh "echo ${env.dockerHubPassword} | docker login -u ${env.dockerHubUser} --password-stdin"
-          sh 'docker push rundcode/jenkins-sosialmedia:v1.0'
+    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    sh 'docker push rundcode/jenkins-sosialmedia:v1.0'
 }
 
 def runImage () {
