@@ -1,2 +1,2 @@
-
+if you fing error with docker.sock
 chmod 666 /var/run/docker.sock 
